@@ -169,7 +169,8 @@
     <Compile Include="AbstractFactory\AbstractCustomerFactory.cs" />
     <Compile Include="AbstractFactory\AbstractVehicleFactory.cs" />
     <Compile Include="AbstractFactory\FactoryProducer.cs" />
-    <Compile Include="Factory\CarFactory.cs" />
+    <Compile Include="Factory\CustomerFactory.cs" />
+    <Compile Include="Factory\VehicleFactory.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Vehicle.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
