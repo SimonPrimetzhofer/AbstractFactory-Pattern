@@ -12,7 +12,10 @@ namespace VehicleApplication_AbstractFactory.Factory {
             Vehicle v = null;
 
             switch(type) {
-
+                case "PKW": v = new Car(); break;
+                case "LKW": v = new Truck(); break;
+                case "Motorrad": v = new Motorcycle(); break;
+                case "Traktor": v = new Tractor(); break;
             }
 
             return v;
