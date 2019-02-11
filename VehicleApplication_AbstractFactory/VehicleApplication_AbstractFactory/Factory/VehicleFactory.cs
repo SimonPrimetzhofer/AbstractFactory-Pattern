@@ -8,7 +8,7 @@ using VehicleApplication_AbstractFactory.Model;
 namespace VehicleApplication_AbstractFactory.Factory {
     public class VehicleFactory : AbstractVehicleFactory {
         
-        public override Vehicle GetVehicle(string type) {
+        public Vehicle GetVehicle(string type) {
             Vehicle v = null;
 
             switch(type) {

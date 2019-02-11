@@ -7,7 +7,7 @@ using VehicleApplication_AbstractFactory.Model;
 
 namespace VehicleApplication_AbstractFactory.Factory {
     public class CustomerFactory : AbstractCustomerFactory {
-        public override Customer GetCustomer(string type) {
+        public Customer GetCustomer(string type) {
             Customer c = null;
 
             switch (type) {
