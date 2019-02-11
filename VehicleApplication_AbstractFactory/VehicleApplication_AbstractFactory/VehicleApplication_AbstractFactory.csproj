@@ -116,6 +116,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Customers.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -168,6 +169,13 @@
     <Compile Include="AbstractFactory\AbstractCustomerFactory.cs" />
     <Compile Include="AbstractFactory\AbstractVehicleFactory.cs" />
     <Compile Include="AbstractFactory\FactoryProducer.cs" />
+    <Compile Include="Customers.aspx.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customers.aspx.designer.cs">
+      <DependentUpon>Customers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Factory\CustomerFactory.cs" />
     <Compile Include="Factory\VehicleFactory.cs" />
     <Compile Include="Model\Customer.cs" />
