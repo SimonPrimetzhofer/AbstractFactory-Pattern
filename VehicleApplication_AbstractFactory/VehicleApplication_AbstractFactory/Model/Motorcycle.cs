@@ -7,8 +7,8 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 namespace VehicleApplication_AbstractFactory.Model {
     public class Motorcycle : Vehicle {
         public override string Drive() {
-            
-            return "Motorradl foad umanaund";
+
+            return string.Format("Das %s %s %s hat %d Sitze", Type, Brand, Model, Seats);
         }
     }
 }
