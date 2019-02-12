@@ -10,7 +10,7 @@ namespace VehicleApplication_AbstractFactory.AbstractFactory {
             return new VehicleFactory();        
         }
 
-        public static AbstractCustomerFactory GetCustomerFactory(string type) {
+        public static AbstractCustomerFactory GetCustomerFactory() {
             return new CustomerFactory();
         }
     }

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace VehicleApplication_AbstractFactory.AbstractFactory {
     public abstract class Vehicle {
-        protected int ID { get; }
-        protected string Type { get; set; }
-        protected string Brand { get; set; }
-        protected string Model { get; set; }
-        protected int Kilowatt { get; set; }
-        protected int Seats { get; set; }
-        protected bool Preowned { get; set; }
-        protected Customer Owner { get; set; }
+        public int ID { get; }
+        public string Type { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public int Kilowatt { get; set; }
+        public int Seats { get; set; }
+        public bool Preowned { get; set; }
+        public Customer Owner { get; set; }
         public abstract string Drive();
 
         public string SellTo(Customer NewOwner) {

@@ -178,6 +178,7 @@
     </Compile>
     <Compile Include="Factory\CustomerFactory.cs" />
     <Compile Include="Factory\VehicleFactory.cs" />
+    <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Vehicle.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -193,7 +194,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Car.cs" />
-    <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Motorcycle.cs" />
     <Compile Include="Model\PrivateCustomer.cs" />
     <Compile Include="Model\Tractor.cs" />
