@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleApplication_AbstractFactory.AbstractFactory {
     public interface Customer {
-        int ID { get; }
+        int ID { get; set; }
         string CustomerType { get; set; }
         string FirstName { get; set; }
         string LastName { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VehicleApplication_AbstractFactory.AbstractFactory {
     public abstract class Vehicle {
-        public int ID { get; }
+        public int ID { get; set; }
         public string Type { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -22,8 +22,8 @@ namespace VehicleApplication_AbstractFactory.AbstractFactory {
 
             if (!Owner.Equals(NewOwner)) {
                 Owner = NewOwner;
-                message = string.Format("%s %s %s was sold to %s %s", Type, Brand, Model, Owner.FirstName, Owner.LastName);
-            } else message = string.Format("%s %s already owns this vehicle!");
+                message = string.Format("{0} {1} {2} was sold to {3} {4}", Type, Brand, Model, Owner.FirstName, Owner.LastName);
+            } else message = string.Format("{0} {1} already owns this vehicle!", Owner.FirstName, Owner.LastName);
 
             return message;
         }

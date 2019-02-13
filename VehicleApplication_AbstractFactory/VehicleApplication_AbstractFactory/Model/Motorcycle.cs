@@ -8,7 +8,7 @@ namespace VehicleApplication_AbstractFactory.Model {
     public class Motorcycle : Vehicle {
         public override string Drive() {
 
-            return string.Format("Das %s %s %s hat %d Sitze", Type, Brand, Model, Seats);
+            return string.Format("Das {0} {1} {2} hat {3} Sitze", Type, Brand, Model, Seats);
         }
     }
 }

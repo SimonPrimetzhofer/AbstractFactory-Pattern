@@ -8,7 +8,7 @@ using VehicleApplication_AbstractFactory.Model;
 namespace VehicleApplication_AbstractFactory.Model {
     public class Car : Vehicle {
         public override string Drive() {
-            return string.Format("Der %s %s %s fährt mit %d Personen", Type, Brand, Model, Seats);
+            return string.Format("Der {0} {1} {2} fährt mit {3} Personen", Type, Brand, Model, Seats);
         }
     }
 }

@@ -4,6 +4,10 @@
 
     <h1>Vehicles</h1>
 
+    <div>
+        <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
+    </div>
+
     <div id="vehicleForm" runat="server">
         <div>
             <table class="auto-style1">
@@ -63,10 +67,6 @@
             </table>
         </div>
     </div>
-
-    <asp:TextBox ID="TextBox1" runat="server" Width="548px"></asp:TextBox>
-
-    <asp:TextBox ID="TextBox2" runat="server" Width="328px"></asp:TextBox>
 
     <br />
 

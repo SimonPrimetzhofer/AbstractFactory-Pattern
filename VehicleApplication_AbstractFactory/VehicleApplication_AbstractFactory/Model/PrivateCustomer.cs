@@ -7,7 +7,7 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 
 namespace VehicleApplication_AbstractFactory.Model {
     public class PrivateCustomer : Customer {
-        public int ID { get; }
+        public int ID { get; set; }
         public string CustomerType { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
