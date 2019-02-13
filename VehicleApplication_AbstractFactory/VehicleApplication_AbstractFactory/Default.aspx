@@ -66,6 +66,8 @@
 
     <asp:TextBox ID="TextBox1" runat="server" Width="548px"></asp:TextBox>
 
+    <asp:TextBox ID="TextBox2" runat="server" Width="328px"></asp:TextBox>
+
     <br />
 
     <asp:GridView ID="vehicleGrid" CssClass="table table-striped" runat="server" AutoGenerateColumns="False" DataSourceID="VehicleDB"

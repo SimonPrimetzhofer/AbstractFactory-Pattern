@@ -14,26 +14,29 @@ namespace VehicleApplication_AbstractFactory {
 
         AbstractVehicleFactory avf = FactoryProducer.GetVehicleFactory();
         AbstractCustomerFactory acf = FactoryProducer.GetCustomerFactory();
+        SqlConnection con;
 
         protected void Page_Load(object sender, EventArgs e) {
 
+            con = new SqlConnection(VehicleDB.ConnectionString);
+
             DataTable dt = new DataTable();
 
-            using (SqlConnection con = new SqlConnection(VehicleDB.ConnectionString)) {
-                try {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);
 
-                    adapter.Fill(dt);
+                adapter.Fill(dt);
 
-                    ownerDropdown.DataSource = dt;
-                    ownerDropdown.DataTextField = "LastName";
-                    ownerDropdown.DataValueField = "ID";
-                    ownerDropdown.DataBind();
+                ownerDropdown.DataSource = dt;
+                ownerDropdown.DataTextField = "LastName";
+                ownerDropdown.DataValueField = "ID";
+                ownerDropdown.DataBind();
 
-                }catch (Exception) {
-
-                }
             }
+            catch (Exception) {
+
+            }
+
         }
 
         protected void vehicleGrid_RowDataBound(object sender, GridViewRowEventArgs e) {
@@ -47,15 +50,18 @@ namespace VehicleApplication_AbstractFactory {
         }
 
         protected void submitButton_Click(object sender, EventArgs e) {
-            Vehicle v = avf.GetVehicle(vehicleType.Text);
+            Vehicle v = avf.GetVehicle(vehicleType.SelectedValue);
 
-            if(v is Car) {
+            if (v is Car) {
                 v = (Car)v;
-            }else if(v is Truck) {
+            }
+            else if (v is Truck) {
                 v = (Truck)v;
-            }else if(v is Motorcycle) {
+            }
+            else if (v is Motorcycle) {
                 v = (Motorcycle)v;
-            }else if(v is Tractor) {
+            }
+            else if (v is Tractor) {
                 v = (Tractor)v;
             }
 
@@ -71,8 +77,39 @@ namespace VehicleApplication_AbstractFactory {
 
             Console.WriteLine(v);
 
-            //Get Owner
-            //PrivateCustomer c = acf.GetCustomer("spezi");
+            //Get Owner from database
+            DataTable dt = new DataTable();
+
+            Customer c = null;
+
+            try {
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Customer where ID = @customerID", con);
+                adapter.SelectCommand.Parameters.AddWithValue("@customerID", ownerDropdown.SelectedValue);
+
+                adapter.Fill(dt);
+
+                DataRow dr = dt.Rows[0];
+                TextBox2.Text = dr["LastName"].ToString();
+
+                //Entry found
+                if(dr != null) {
+                    //Company --> has no firstname
+                    if(dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length == 0) {
+                        c = (Company) acf.GetCustomer("Firma");
+                    }else if(dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length > 0) {
+                        c = (PrivateCustomer)acf.GetCustomer("Privatperson");
+                    }
+                }
+
+            }
+            catch (Exception) {
+
+            }
+
+            //Set owner
+            v.Owner = c;
+
+            TextBox2.Text = v.Owner.LastName;
 
         }
     }
