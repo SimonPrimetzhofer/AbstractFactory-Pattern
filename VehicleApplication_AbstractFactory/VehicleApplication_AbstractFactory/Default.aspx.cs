@@ -21,7 +21,8 @@ namespace VehicleApplication_AbstractFactory {
             con = new SqlConnection(VehicleDB.ConnectionString);
 
             VehicleDB.DeleteCommand = "DELETE FROM dbo.Vehicle where ID = @ID";
-            //VehicleDB.DeleteParameters.Add(new Parameter("id", DbType.Int32));
+
+            //VehicleDB.UpdateCommand = "UPDATE dbo.Vehicle SET Type=@Type,B=@LastName,Title=@Title WHERE EmployeeID=@EmployeeID";
 
             con.Open();
 
@@ -51,7 +52,7 @@ namespace VehicleApplication_AbstractFactory {
             if (e.Row.RowType == DataControlRowType.DataRow) {
                 bool val = Convert.ToBoolean(drv["Preowned"]);
 
-                e.Row.Cells[5].Text = (val ? "Yes" : "No");
+                e.Row.Cells[6].Text = (val ? "Yes" : "No");
             }
 
         }
