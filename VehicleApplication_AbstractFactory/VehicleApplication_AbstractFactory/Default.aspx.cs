@@ -19,12 +19,16 @@ namespace VehicleApplication_AbstractFactory {
         protected void Page_Load(object sender, EventArgs e) {
 
             con = new SqlConnection(VehicleDB.ConnectionString);
+
+            VehicleDB.DeleteCommand = "DELETE FROM dbo.Vehicle where ID = @ID";
+            //VehicleDB.DeleteParameters.Add(new Parameter("id", DbType.Int32));
+
             con.Open();
 
             DataTable dt = new DataTable();
 
             try {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);                
 
                 adapter.Fill(dt);
 

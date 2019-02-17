@@ -71,20 +71,22 @@
     <br />
 
     <asp:GridView ID="vehicleGrid" CssClass="table table-striped" runat="server" AutoGenerateColumns="False" DataSourceID="VehicleDB"
-        OnRowDataBound="vehicleGrid_RowDataBound">
+        OnRowDataBound="vehicleGrid_RowDataBound" DataKeyNames="ID">
         <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" Visible="true" InsertVisible="False" ReadOnly="True" />
             <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
             <asp:BoundField DataField="Brand" HeaderText="Brand" SortExpression="Brand" />
             <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
             <asp:BoundField DataField="Kilowatt" HeaderText="Kilowatt" SortExpression="Kilowatt" />
             <asp:BoundField DataField="Seats" HeaderText="Seats" SortExpression="Seats" />
             <asp:BoundField DataField="Preowned" HeaderText="Preowned" SortExpression="Preowned" />
-            <asp:BoundField DataField="LastName" HeaderText="Owner" SortExpression="LastName" />
+            <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
+            <asp:CommandField ShowEditButton="true" ButtonType="Button" EditText="Edit" UpdateText="Update" CancelText="Cancel" />
+            <asp:CommandField ShowDeleteButton="true" ButtonType="Button" DeleteText="Delete" />
+
         </Columns>
     </asp:GridView>
 
-    <asp:SqlDataSource ID="VehicleDB" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT Vehicle.Type, Vehicle.Brand, Vehicle.Model, Vehicle.Kilowatt, Vehicle.Seats, Vehicle.Preowned, Customer.LastName FROM Customer INNER JOIN Vehicle ON Customer.ID = Vehicle.Owner"></asp:SqlDataSource>
-
-
+    <asp:SqlDataSource ID="VehicleDB" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT Vehicle.ID, Vehicle.Type, Vehicle.Brand, Vehicle.Model, Vehicle.Kilowatt, Vehicle.Seats, Vehicle.Preowned, Customer.LastName FROM Customer INNER JOIN Vehicle ON Customer.ID = Vehicle.Owner"></asp:SqlDataSource>
 
 </asp:Content>
