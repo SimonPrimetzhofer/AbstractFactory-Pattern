@@ -22,7 +22,7 @@ namespace VehicleApplication_AbstractFactory {
 
             VehicleDB.DeleteCommand = "DELETE FROM dbo.Vehicle where ID = @ID";
 
-            //VehicleDB.UpdateCommand = "UPDATE dbo.Vehicle SET Type=@Type,B=@LastName,Title=@Title WHERE EmployeeID=@EmployeeID";
+            VehicleDB.UpdateCommand = "UPDATE dbo.Vehicle SET Model=@Model, Kilowatt=@Kilowatt, Seats=@Seats WHERE ID=@ID";
 
             con.Open();
 
