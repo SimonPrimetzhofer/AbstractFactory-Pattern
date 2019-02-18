@@ -4,9 +4,6 @@
 
     <h1>Vehicles</h1>
 
-    <div>
-    </div>
-
     <div id="vehicleForm" runat="server">
         <div>
             <table class="auto-style1">
