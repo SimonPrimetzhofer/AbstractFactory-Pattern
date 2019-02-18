@@ -5,7 +5,6 @@
     <h1>Vehicles</h1>
 
     <div>
-        <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
     </div>
 
     <div id="vehicleForm" runat="server">
@@ -37,13 +36,13 @@
                 <tr>
                     <td>Kilowatt: </td>
                     <td>
-                        <asp:TextBox ID="vehicleKw" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="vehicleKw" runat="server" TextMode="Number"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>Seats: </td>
                     <td>
-                        <asp:TextBox ID="vehicleSeats" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="vehicleSeats" runat="server" TextMode="Number"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Preowned: </td>
@@ -62,11 +61,18 @@
                 <tr>
                     <td>
                         <asp:Button ID="submitButton" runat="server" Text="Save" OnClick="submitButton_Click" />
+
+                    </td>
+                    <td>
+                        <asp:Button ID="clearButton" runat="server" Text="Clear" OnClick="clearButton_Click" />
                     </td>
                 </tr>
             </table>
         </div>
     </div>
+
+    <asp:Label ID="MessageLabel" runat="server" Text=""></asp:Label>
+    <br />
 
     <br />
 
@@ -75,7 +81,7 @@
         <Columns>
             <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" Visible="false" ReadOnly="True" />
             <asp:BoundField ReadOnly="true" DataField="Type" HeaderText="Type" SortExpression="Type" />
-            <asp:BoundField ReadOnly="true" DataField="Brand" HeaderText="Brand" SortExpression="Brand" />
+            <asp:BoundField DataField="Brand" HeaderText="Brand" SortExpression="Brand" />
             <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
             <asp:BoundField DataField="Kilowatt" HeaderText="Kilowatt" SortExpression="Kilowatt" />
             <asp:BoundField DataField="Seats" HeaderText="Seats" SortExpression="Seats" />

@@ -22,7 +22,7 @@ namespace VehicleApplication_AbstractFactory {
 
             VehicleDB.DeleteCommand = "DELETE FROM dbo.Vehicle where ID = @ID";
 
-            VehicleDB.UpdateCommand = "UPDATE dbo.Vehicle SET Model=@Model, Kilowatt=@Kilowatt, Seats=@Seats WHERE ID=@ID";
+            VehicleDB.UpdateCommand = "UPDATE dbo.Vehicle SET Brand=@Brand, Model=@Model, Kilowatt=@Kilowatt, Seats=@Seats WHERE ID=@ID";
 
             con.Open();
 
@@ -64,8 +64,20 @@ namespace VehicleApplication_AbstractFactory {
             v.Brand = vehicleBrand.Text;
             v.Model = vehicleModel.Text;
 
-            v.Kilowatt = int.Parse(vehicleKw.Text);
-            v.Seats = int.Parse(vehicleSeats.Text);
+            try {
+                v.Kilowatt = int.Parse(vehicleKw.Text);
+                v.Seats = int.Parse(vehicleSeats.Text);
+
+            }catch(Exception ex) {
+                MessageLabel.Text = "Kilowatt and Seats must be a number!";
+                return;
+            }
+
+            if (v.Kilowatt < 0 || v.Seats < 0) {
+                MessageLabel.Text = "Kilowatt and Seats must be at least 0!";
+                return;
+            }
+
             v.Preowned = vehiclePreowned.Checked;
 
             //Get Owner from database
@@ -74,7 +86,14 @@ namespace VehicleApplication_AbstractFactory {
             Customer c = null;
 
             try {
+
+                if (ownerDropdown.SelectedIndex == 0) {
+                    MessageLabel.Text = "Select an owner!";
+                    return;
+                }
+
                 con.Open();
+
                 SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Customer where ID = @customerID", con);
                 adapter.SelectCommand.Parameters.AddWithValue("@customerID", ownerDropdown.SelectedValue);
 
@@ -86,10 +105,10 @@ namespace VehicleApplication_AbstractFactory {
                 if (dr != null) {
                     //Company --> has no firstname
                     if (dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length == 0) {
-                        c = (Company)acf.GetCustomer("Firma");
+                        c = acf.GetCustomer("Firma");
                     }
                     else if (dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length > 0) {
-                        c = (PrivateCustomer)acf.GetCustomer("Privatperson");
+                        c = acf.GetCustomer("Privatperson");
                     }
 
                     //set values of customer
@@ -154,6 +173,20 @@ namespace VehicleApplication_AbstractFactory {
             //refresh datagrid
             vehicleGrid.DataBind();
 
+            ClearForm();
+
         }
+
+        protected void ClearForm() {
+            vehicleType.SelectedIndex = 0;
+            vehicleBrand.Text = "";
+            vehicleModel.Text = "";
+            vehicleKw.Text = "";
+            vehicleSeats.Text = "";
+            vehiclePreowned.Checked = false;
+            ownerDropdown.SelectedIndex = 0;
+        }
+
+        protected void clearButton_Click(object sender, EventArgs e) => ClearForm();
     }
 }

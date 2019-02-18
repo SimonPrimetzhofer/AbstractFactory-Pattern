@@ -13,15 +13,6 @@ namespace VehicleApplication_AbstractFactory {
     public partial class _Default {
         
         /// <summary>
-        /// MessageLabel-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MessageLabel;
-        
-        /// <summary>
         /// vehicleForm-Steuerelement
         /// </summary>
         /// <remarks>
@@ -101,6 +92,24 @@ namespace VehicleApplication_AbstractFactory {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button submitButton;
+        
+        /// <summary>
+        /// clearButton-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button clearButton;
+        
+        /// <summary>
+        /// MessageLabel-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MessageLabel;
         
         /// <summary>
         /// vehicleGrid-Steuerelement
