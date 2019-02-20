@@ -50,7 +50,7 @@
                 <tr>
                     <td>Owner</td>
                     <td>
-                        <asp:DropDownList ID="ownerDropdown" runat="server" AppendDataBoundItems="true">
+                        <asp:DropDownList ID="ownerDropdown" runat="server" AppendDataBoundItems="True">
                             <asp:ListItem Text="Select Owner" Value="select" Selected="True"></asp:ListItem>
                         </asp:DropDownList>
                     </td>

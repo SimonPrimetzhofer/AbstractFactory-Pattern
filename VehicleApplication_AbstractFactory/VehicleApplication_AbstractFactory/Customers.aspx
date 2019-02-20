@@ -2,15 +2,52 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Customers</h1>
-    <asp:GridView ID="customersGrid" CssClass="table table-striped" runat="server" AutoGenerateColumns="False" DataSourceID="VehicleDB_Customers">
+
+    <div id="customerForm" runat="server">
+        <div>
+            <table class="auto-style1">
+                <tr>
+                    <td>Type: </td>
+                    <td>
+                        <asp:DropDownList ID="customerType" runat="server">
+                            <asp:ListItem Text="Private person" Value="Privatperson" Selected="True"></asp:ListItem>
+                            <asp:ListItem Text="Company" Value="Firma"></asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>First name: </td>
+                    <td>
+                        <asp:TextBox ID="customerFirstname" runat="server"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td>Last name: </td>
+                    <td>
+                        <asp:TextBox ID="customerLastname" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Income: </td>
+                    <td>
+                        <asp:TextBox ID="customerIncome" runat="server" TextMode="Number"></asp:TextBox>
+                    </td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+
+    <asp:GridView ID="customersGrid" CssClass="table table-striped" runat="server" AutoGenerateColumns="False" DataSourceID="VehicleDB_Customers" DataKeyNames="ID">
         <Columns>
+            <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" ReadOnly="True" Visible="false" />
             <asp:BoundField DataField="CustomerType" HeaderText="CustomerType" SortExpression="CustomerType" />
             <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
             <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
             <asp:BoundField DataField="Income" HeaderText="Income" SortExpression="Income" />
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="VehicleDB_Customers" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT [CustomerType], [FirstName], [LastName], [Income] FROM [Customer]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="VehicleDB_Customers" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>
 
 
 </asp:Content>

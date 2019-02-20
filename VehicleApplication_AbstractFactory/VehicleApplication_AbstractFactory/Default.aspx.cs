@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using VehicleApplication_AbstractFactory.AbstractFactory;
-using VehicleApplication_AbstractFactory.Model;
 
 namespace VehicleApplication_AbstractFactory {
     public partial class _Default : Page {
@@ -16,8 +15,7 @@ namespace VehicleApplication_AbstractFactory {
         AbstractCustomerFactory acf = FactoryProducer.GetCustomerFactory();
         SqlConnection con;
 
-        protected void Page_Load(object sender, EventArgs e) {
-
+        protected void Page_Init(object sender, EventArgs e) {
             con = new SqlConnection(VehicleDB.ConnectionString);
 
             VehicleDB.DeleteCommand = "DELETE FROM dbo.Vehicle where ID = @ID";
@@ -29,7 +27,7 @@ namespace VehicleApplication_AbstractFactory {
             DataTable dt = new DataTable();
 
             try {
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);                
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Customer", con);
 
                 adapter.Fill(dt);
 
@@ -44,6 +42,9 @@ namespace VehicleApplication_AbstractFactory {
             catch (Exception) {
 
             }
+        }
+
+        protected void Page_Load(object sender, EventArgs e) {
 
         }
 
