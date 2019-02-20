@@ -9,8 +9,8 @@
                 <tr>
                     <td>Type: </td>
                     <td>
-                        <asp:DropDownList ID="customerType" runat="server">
-                            <asp:ListItem Text="Private person" Value="Privatperson" Selected="True"></asp:ListItem>
+                        <asp:DropDownList ID="customerType" runat="server" AutoPostBack="true" OnSelectedIndexChanged="customerType_SelectedIndexChanged">
+                            <asp:ListItem Text="Private Person" Value="Privatperson" Selected="True"></asp:ListItem>
                             <asp:ListItem Text="Company" Value="Firma"></asp:ListItem>
                         </asp:DropDownList>
                     </td>
@@ -34,7 +34,20 @@
                     </td>
                 </tr>
                 
+                <tr>
+                    <td>
+                        <asp:Button ID="customerSubmitButton" runat="server" Text="Save" OnClick="customerSubmitButton_Click" />
+
+                    </td>
+                    <td>
+                        <asp:Button ID="customerClearButton" runat="server" Text="Clear" OnClick="customerClearButton_Click" />
+                    </td>
+                </tr>
+
             </table>
+            <br />
+            <asp:Label ID="CustomerMessageLabel" runat="server"></asp:Label>
+            <br />
         </div>
     </div>
 

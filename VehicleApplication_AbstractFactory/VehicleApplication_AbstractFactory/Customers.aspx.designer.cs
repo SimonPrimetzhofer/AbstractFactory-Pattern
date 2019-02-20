@@ -58,6 +58,33 @@ namespace VehicleApplication_AbstractFactory {
         protected global::System.Web.UI.WebControls.TextBox customerIncome;
         
         /// <summary>
+        /// customerSubmitButton-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button customerSubmitButton;
+        
+        /// <summary>
+        /// customerClearButton-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button customerClearButton;
+        
+        /// <summary>
+        /// CustomerMessageLabel-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CustomerMessageLabel;
+        
+        /// <summary>
         /// customersGrid-Steuerelement
         /// </summary>
         /// <remarks>

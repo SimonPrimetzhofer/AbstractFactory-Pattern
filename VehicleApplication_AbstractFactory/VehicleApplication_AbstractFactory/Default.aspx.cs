@@ -134,7 +134,7 @@ namespace VehicleApplication_AbstractFactory {
 
         }
 
-        private void setMessageLabel(Vehicle v) {
+        private void SetMessageLabel(Vehicle v) {
             MessageLabel.Text = string.Format("{0} - Besitzer: {1} {2} {3}", v.Drive(), v.Owner.CustomerType,
                 v.Owner.FirstName, v.Owner.LastName);
         }
@@ -175,6 +175,9 @@ namespace VehicleApplication_AbstractFactory {
             vehicleGrid.DataBind();
 
             ClearForm();
+
+            //Show a message
+            SetMessageLabel(toInsert);
 
         }
 
