@@ -58,6 +58,8 @@
             <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
             <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
             <asp:BoundField DataField="Income" HeaderText="Income" SortExpression="Income" />
+            <asp:CommandField ShowEditButton="true" ButtonType="Button" EditText="Edit" UpdateText="Update" CancelText="Cancel" />
+            <asp:CommandField ShowDeleteButton="true" ButtonType="Button" DeleteText="Delete" />
         </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="VehicleDB_Customers" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>

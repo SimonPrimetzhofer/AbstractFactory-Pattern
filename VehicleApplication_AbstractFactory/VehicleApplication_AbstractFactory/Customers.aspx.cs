@@ -21,7 +21,9 @@ namespace VehicleApplication_AbstractFactory {
 
             VehicleDB_Customers.DeleteCommand = "Delete from dbo.Customer where ID=@ID";
 
-            VehicleDB_Customers.UpdateCommand = "UPDATE dbo.Customer SET FirstName=@FirstName, LastName=@LastName, Income=@Income WHERE ID=@ID";
+            //Replace ',' by '.' in conversion to fit decimal
+            VehicleDB_Customers.UpdateCommand = "UPDATE dbo.Customer SET FirstName=@FirstName, LastName=@LastName, " +
+                "Income=CONVERT(DECIMAL(10,2),replace(@Income,',','.')) WHERE ID=@ID";
 
         }
 
@@ -69,9 +71,15 @@ namespace VehicleApplication_AbstractFactory {
 
             dt.Rows.Add(dr);
 
+            new SqlCommandBuilder(adapter);
+
+            adapter.Update(dt);
+
             con.Close();
 
             customersGrid.DataBind();
+
+            ClearForm();
 
             SetCustomerMessageLabel(toInsert);
         }
@@ -81,6 +89,7 @@ namespace VehicleApplication_AbstractFactory {
         }
 
         private void ClearForm() {
+            customerFirstname.Enabled = true;
             customerType.SelectedIndex = 0;
             customerFirstname.Text = "";
             customerLastname.Text = "";
