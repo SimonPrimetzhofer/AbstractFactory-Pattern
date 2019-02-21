@@ -62,7 +62,7 @@
             <asp:CommandField ShowDeleteButton="true" ButtonType="Button" DeleteText="Delete" />
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="VehicleDB_Customers" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="VehicleDB_Customers" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]" OnDeleted="VehicleDB_Customers_Deleted"></asp:SqlDataSource>
 
 
 </asp:Content>

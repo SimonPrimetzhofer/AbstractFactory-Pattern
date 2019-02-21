@@ -13,6 +13,9 @@ namespace VehicleApplication_AbstractFactory {
 
         AbstractCustomerFactory acf = FactoryProducer.GetCustomerFactory();
 
+        //id of the default customer
+        public static readonly int DefaultCustomer = 8;
+
         SqlConnection con;
 
         protected void Page_Init(object sender, EventArgs e) {
@@ -24,7 +27,6 @@ namespace VehicleApplication_AbstractFactory {
             //Replace ',' by '.' in conversion to fit decimal
             VehicleDB_Customers.UpdateCommand = "UPDATE dbo.Customer SET FirstName=@FirstName, LastName=@LastName, " +
                 "Income=CONVERT(DECIMAL(10,2),replace(@Income,',','.')) WHERE ID=@ID";
-
         }
 
         protected void Page_Load(object sender, EventArgs e) {
@@ -40,12 +42,13 @@ namespace VehicleApplication_AbstractFactory {
 
             try {
                 c.Income = double.Parse(customerIncome.Text);
-            }catch(Exception) {
+            }
+            catch (Exception) {
                 CustomerMessageLabel.Text = "Income must be a number with 2 decimal digits!";
                 return;
             }
 
-            if(c.Income < 0) {
+            if (c.Income < 0) {
                 CustomerMessageLabel.Text = "Income must be greater or equal to zero!";
                 return;
             }
@@ -104,6 +107,64 @@ namespace VehicleApplication_AbstractFactory {
             }
             else if (customerType.SelectedIndex == 0)
                 customerFirstname.Enabled = true;
+        }
+
+        protected void VehicleDB_Customers_Deleted(object sender, SqlDataSourceStatusEventArgs e) {
+
+            //The default customer must not be deleted!
+            if ((int)e.Command.Parameters["@ID"].Value == DefaultCustomer) {
+                CustomerMessageLabel.Text = "Dieser User darf nicht gelöscht werden!";
+                e.ExceptionHandled = true;
+                return;
+            }
+
+            //Check if exception occured
+            if (e.Exception != null) {
+
+                //Get id to set all occurences of the customer to the 'No owner specified' customer
+                int id = (int)e.Command.Parameters["@ID"].Value;
+
+                //Get Owner from database
+                DataTable dt = new DataTable();
+
+                try {
+
+                    con.Open();
+
+                    //Get all vehicles where the customer which gets deleted is the owner
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM dbo.Vehicle where Owner = @customerID", con);
+                    adapter.SelectCommand.Parameters.AddWithValue("@customerID", id);
+
+                    adapter.Fill(dt);
+
+                    //Set owner to default customer
+                    foreach (DataRow row in dt.Rows) {
+                        row["Owner"] = DefaultCustomer;
+                    }
+
+                    new SqlCommandBuilder(adapter);
+
+                    //Update Table
+                    adapter.Update(dt);
+
+                    con.Close();
+
+
+                }
+                catch (Exception) {
+
+                }
+
+                //Refresh grid
+                customersGrid.DataBind();
+
+                //Retry command after removing vehicles from customer
+                e.Command.ExecuteNonQuery();
+
+                //Now the exception is handled
+                e.ExceptionHandled = true;
+            }
+
         }
     }
 }
