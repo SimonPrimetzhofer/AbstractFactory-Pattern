@@ -39,6 +39,8 @@
         </tr>
     </table>
 
+    <asp:Label ID="TransactionLabel" runat="server" Font-Size="25pt"></asp:Label>
+
     <asp:SqlDataSource ID="SellDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="select * from customer where (select count(*) from vehicle where owner=customer.ID) &gt; 0;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="BuyerDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>
 
