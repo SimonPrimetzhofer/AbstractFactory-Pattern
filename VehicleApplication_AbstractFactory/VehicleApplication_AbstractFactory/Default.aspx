@@ -6,7 +6,7 @@
 
     <div id="vehicleForm" runat="server">
         <div>
-            <table class="auto-style1">
+            <table class="table">
                 <tr>
                     <td>Type: </td>
                     <td>
