@@ -59,6 +59,28 @@ namespace VehicleApplication_AbstractFactory {
                     //Execute the update command
                     adapter.UpdateCommand.ExecuteNonQuery();
 
+                    //Add entry to sales table
+                    SqlDataAdapter salesAdapter = new SqlDataAdapter("SELECT * FROM dbo.Sales where 0=1", con);
+                    DataTable dt = new DataTable();
+                    salesAdapter.Fill(dt);
+
+                    DataRow dr = dt.NewRow();
+
+                    dr["Seller"] = SellerDropdown.SelectedValue;
+                    dr["Buyer"] = BuyerDropdown.SelectedValue;
+                    try {
+                        dr["Price"] = double.Parse(Price.Text);
+                    }
+                    catch (Exception) { }
+                    dr["Vehicle"] = VehicleDropdown.SelectedValue;
+
+                    dt.Rows.Add(dr);
+
+                    new SqlCommandBuilder(salesAdapter);
+
+                    salesAdapter.Update(dt);
+
+
                     //Print message for completion
                     TransactionLabel.Text = string.Format("The vehicle {0} was sold from {1} to {2} for {3} €",
                         VehicleDropdown.SelectedItem, SellerDropdown.SelectedItem, BuyerDropdown.SelectedItem, Price.Text);
