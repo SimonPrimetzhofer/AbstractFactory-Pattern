@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Sell" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Sell.aspx.cs" Inherits="VehicleApplication_AbstractFactory.Sell" %>
 
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1>Sales</h1>
 
@@ -40,6 +42,21 @@
     </table>
 
     <asp:Label ID="TransactionLabel" runat="server" Font-Size="25pt"></asp:Label>
+
+    <br />
+    <asp:Chart ID="Chart1" runat="server" DataSourceID="DiagramDatasource">
+        <series>
+            <asp:Series Name="Series1" XValueMember="LastName" YValueMembers="OverallRevenue">
+            </asp:Series>
+        </series>
+        <chartareas>
+            <asp:ChartArea Name="ChartArea1">
+            </asp:ChartArea>
+        </chartareas>
+    </asp:Chart>
+    <asp:SqlDataSource ID="DiagramDatasource" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT Customer.LastName, SUM(Sales.Price) AS OverallRevenue FROM Sales INNER JOIN Customer ON Sales.Seller = Customer.ID GROUP BY Customer.LastName"></asp:SqlDataSource>
+    <br />
+
 
     <asp:SqlDataSource ID="SellDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="select * from customer where (select count(*) from vehicle where owner=customer.ID) &gt; 0;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="BuyerDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:VehicleDatabaseConnectionString %>" SelectCommand="SELECT * FROM [Customer]"></asp:SqlDataSource>

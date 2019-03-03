@@ -67,6 +67,24 @@ namespace VehicleApplication_AbstractFactory {
         protected global::System.Web.UI.WebControls.Label TransactionLabel;
         
         /// <summary>
+        /// Chart1-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart1;
+        
+        /// <summary>
+        /// DiagramDatasource-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DiagramDatasource;
+        
+        /// <summary>
         /// SellDataSource-Steuerelement
         /// </summary>
         /// <remarks>
