@@ -159,7 +159,12 @@ namespace VehicleApplication_AbstractFactory {
                 customersGrid.DataBind();
 
                 //Retry command after removing vehicles from customer
-                e.Command.ExecuteNonQuery();
+                try {
+                    e.Command.ExecuteNonQuery();
+                }catch(Exception) {
+                    CustomerMessageLabel.Text = "This customer can't be deleted since he " +
+                        "owns vehicles or has sold one in the past!";
+                }
 
                 //Now the exception is handled
                 e.ExceptionHandled = true;

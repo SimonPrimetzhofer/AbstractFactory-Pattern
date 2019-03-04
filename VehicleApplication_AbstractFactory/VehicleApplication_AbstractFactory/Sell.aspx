@@ -44,7 +44,8 @@
     <asp:Label ID="TransactionLabel" runat="server" Font-Size="25pt"></asp:Label>
 
     <br />
-    <asp:Chart ID="Chart1" runat="server" DataSourceID="DiagramDatasource">
+    <h3>Overall revenue chart per customer</h3>
+    <asp:Chart ID="RevenueChart" runat="server" DataSourceID="DiagramDatasource">
         <series>
             <asp:Series Name="Series1" XValueMember="LastName" YValueMembers="OverallRevenue">
             </asp:Series>

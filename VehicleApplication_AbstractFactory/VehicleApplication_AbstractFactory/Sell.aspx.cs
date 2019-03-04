@@ -20,7 +20,7 @@ namespace VehicleApplication_AbstractFactory {
         }
 
         protected void Page_Load(object sender, EventArgs e) {
-
+            
         }
 
         protected void CompleteButton_Click(object sender, EventArgs e) {
