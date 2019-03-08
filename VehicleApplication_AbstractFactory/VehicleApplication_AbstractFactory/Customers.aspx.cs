@@ -149,7 +149,6 @@ namespace VehicleApplication_AbstractFactory {
 
                     con.Close();
 
-
                 }
                 catch (Exception) {
 

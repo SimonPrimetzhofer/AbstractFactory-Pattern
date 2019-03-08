@@ -5,3 +5,4 @@ https://refactoring.guru/design-patterns/abstract-factory
 https://www.geeksforgeeks.org/abstract-factory-pattern/
 https://stackoverflow.com/questions/5739611/differences-between-abstract-factory-pattern-and-factory-method
 https://docs.microsoft.com/en-us/aspnet/web-pages/overview/data/7-displaying-data-in-a-chart
+https://medium.com/@hitherejoe/design-patterns-abstract-factory-39a22985bdbf
