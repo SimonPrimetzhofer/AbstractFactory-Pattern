@@ -11,8 +11,6 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 namespace VehicleApplication_AbstractFactory {
     public partial class Sell : System.Web.UI.Page {
 
-        AbstractVehicleFactory avf = FactoryProducer.GetVehicleFactory();
-
         SqlConnection con;
 
         protected void Page_Init(object sender, EventArgs e) {

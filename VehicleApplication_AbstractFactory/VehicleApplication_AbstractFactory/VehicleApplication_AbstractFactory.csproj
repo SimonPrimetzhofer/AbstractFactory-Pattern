@@ -167,8 +167,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractFactory\AbstractCustomerFactory.cs" />
-    <Compile Include="AbstractFactory\AbstractVehicleFactory.cs" />
+    <Compile Include="AbstractFactory\IAbstractFactory.cs" />
     <Compile Include="AbstractFactory\FactoryProducer.cs" />
     <Compile Include="Customers.aspx.cs">
       <DependentUpon>Customers.aspx</DependentUpon>

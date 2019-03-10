@@ -11,8 +11,8 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 namespace VehicleApplication_AbstractFactory {
     public partial class _Default : Page {
 
-        AbstractVehicleFactory avf = FactoryProducer.GetVehicleFactory();
-        AbstractCustomerFactory acf = FactoryProducer.GetCustomerFactory();
+        IAbstractFactory<Vehicle> avf = FactoryProducer.GetVehicleFactory();
+        IAbstractFactory<Customer> acf = FactoryProducer.GetCustomerFactory();
         SqlConnection con;
 
         protected void Page_Init(object sender, EventArgs e) {
@@ -59,7 +59,7 @@ namespace VehicleApplication_AbstractFactory {
         }
 
         protected void submitButton_Click(object sender, EventArgs e) {
-            Vehicle v = avf.GetVehicle(vehicleType.SelectedValue);
+            Vehicle v = avf.Get(vehicleType.SelectedValue);
 
             v.Type = vehicleType.Text;
             v.Brand = vehicleBrand.Text;
@@ -106,10 +106,10 @@ namespace VehicleApplication_AbstractFactory {
                 if (dr != null) {
                     //Company --> has no firstname
                     if (dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length == 0) {
-                        c = acf.GetCustomer("Firma");
+                        c = acf.Get("Firma");
                     }
                     else if (dr["LastName"].ToString().Length > 0 && dr["FirstName"].ToString().Length > 0) {
-                        c = acf.GetCustomer("Privatperson");
+                        c = acf.Get("Privatperson");
                     }
 
                     //set values of customer

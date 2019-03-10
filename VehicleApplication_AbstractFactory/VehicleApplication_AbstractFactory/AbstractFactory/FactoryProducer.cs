@@ -6,11 +6,11 @@ using VehicleApplication_AbstractFactory.Factory;
 
 namespace VehicleApplication_AbstractFactory.AbstractFactory {
     public class FactoryProducer {
-        public static AbstractVehicleFactory GetVehicleFactory() {
+        public static IAbstractFactory<Vehicle> GetVehicleFactory() {
             return new VehicleFactory();        
         }
 
-        public static AbstractCustomerFactory GetCustomerFactory() {
+        public static IAbstractFactory<Customer> GetCustomerFactory() {
             return new CustomerFactory();
         }
     }

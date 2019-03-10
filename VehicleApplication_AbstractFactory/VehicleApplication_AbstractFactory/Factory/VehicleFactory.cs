@@ -6,9 +6,9 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 using VehicleApplication_AbstractFactory.Model;
 
 namespace VehicleApplication_AbstractFactory.Factory {
-    public class VehicleFactory : AbstractVehicleFactory {
+    public class VehicleFactory : IAbstractFactory<Vehicle> {
         
-        public Vehicle GetVehicle(string type) {
+        public Vehicle Get(string type) {
             Vehicle v = null;
 
             switch(type) {

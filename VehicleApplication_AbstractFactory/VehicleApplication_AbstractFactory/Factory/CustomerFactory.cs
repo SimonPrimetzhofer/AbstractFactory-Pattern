@@ -6,8 +6,8 @@ using VehicleApplication_AbstractFactory.AbstractFactory;
 using VehicleApplication_AbstractFactory.Model;
 
 namespace VehicleApplication_AbstractFactory.Factory {
-    public class CustomerFactory : AbstractCustomerFactory {
-        public Customer GetCustomer(string type) {
+    public class CustomerFactory : IAbstractFactory<Customer> {
+        public Customer Get(string type) {
             Customer c = null;
 
             switch (type) {

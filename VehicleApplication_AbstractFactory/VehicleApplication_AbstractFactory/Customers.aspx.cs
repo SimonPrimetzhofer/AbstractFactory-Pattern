@@ -11,7 +11,7 @@ using System.Data;
 namespace VehicleApplication_AbstractFactory {
     public partial class Customers : System.Web.UI.Page {
 
-        AbstractCustomerFactory acf = FactoryProducer.GetCustomerFactory();
+        IAbstractFactory<Customer> acf = FactoryProducer.GetCustomerFactory();
 
         //id of the default customer
         public static readonly int DefaultCustomer = 8;
@@ -34,7 +34,7 @@ namespace VehicleApplication_AbstractFactory {
         }
 
         protected void customerSubmitButton_Click(object sender, EventArgs e) {
-            Customer c = acf.GetCustomer(customerType.SelectedValue);
+            Customer c = acf.Get(customerType.SelectedValue);
 
             c.CustomerType = customerType.SelectedValue;
             c.FirstName = customerFirstname.Text;
