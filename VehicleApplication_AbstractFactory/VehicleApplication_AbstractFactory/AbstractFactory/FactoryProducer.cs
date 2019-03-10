@@ -9,6 +9,7 @@ namespace VehicleApplication_AbstractFactory.AbstractFactory {
         public static IAbstractFactory<Vehicle> GetVehicleFactory() {
             //Simply switch concrete factory to use another one
             //In this case: SpecialVehicleFactory
+            //return new SpecialVehicleFactory();
             return new VehicleFactory();        
         }
 
