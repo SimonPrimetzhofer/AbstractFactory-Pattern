@@ -177,6 +177,7 @@
       <DependentUpon>Customers.aspx</DependentUpon>
     </Compile>
     <Compile Include="Factory\CustomerFactory.cs" />
+    <Compile Include="Factory\SpecialVehicleFactory.cs" />
     <Compile Include="Factory\VehicleFactory.cs" />
     <Compile Include="Model\Company.cs" />
     <Compile Include="Model\Customer.cs" />
